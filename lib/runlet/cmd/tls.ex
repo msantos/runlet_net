@@ -49,7 +49,7 @@ defmodule Runlet.Cmd.TLS do
            ) do
         {:ok, s} ->
           info = connection_information(s)
-          :ssl.close(s)
+          _ = :ssl.close(s)
           cert = chain()
           [info | cert]
 

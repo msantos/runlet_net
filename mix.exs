@@ -9,7 +9,16 @@ defmodule RunletNet.Mixfile do
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       description: "Miscellaneous network related commands for runlets",
-      deps: deps()
+      deps: deps(),
+      dialyzer: [
+        list_unused_filters: true,
+        flags: [
+          "-Wunmatched_returns",
+          :error_handling,
+          :race_conditions,
+          :underspecs
+        ]
+      ]
     ]
   end
 
@@ -33,8 +42,8 @@ defmodule RunletNet.Mixfile do
   defp deps do
     [
       {:runlet, git: "https://github.com/msantos/runlet.git"},
-      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false}
+      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev], runtime: false}
     ]
   end
 end
