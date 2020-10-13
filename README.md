@@ -9,6 +9,6 @@ Add `runlet_net` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:runlet_net, "[runlets](https://github.com/msantos/runlet_net.git)"}]
+  [{:runlet_net, "https://github.com/msantos/runlet_net.git"}]
 end
 ```
