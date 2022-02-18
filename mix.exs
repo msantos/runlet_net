@@ -4,7 +4,7 @@ defmodule RunletNet.Mixfile do
   def project do
     [
       app: :runlet_net,
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: "~> 1.9",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -41,9 +41,9 @@ defmodule RunletNet.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:runlet, git: "https://github.com/msantos/runlet.git"},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev], runtime: false}
+      {:runlet, "~> 1.1"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 end

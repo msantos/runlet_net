@@ -84,31 +84,21 @@ defmodule Runlet.Cmd.TLS do
     """
     Data:
       version: #{Kernel.get_in(x509, [:data, :version])}
-      serialNumber: #{
-      x509 |> Kernel.get_in([:data, :serialNumber]) |> serial_number()
-    }
+      serialNumber: #{x509 |> Kernel.get_in([:data, :serialNumber]) |> serial_number()}
 
     Issuer:
-      #{
-      Regex.replace(
-        ~r/[^ -~\\\n]/,
-        x509 |> Kernel.get_in([:issuer]) |> to_string,
-        ""
-      )
-    }
+      #{Regex.replace(~r/[^ -~\\\n]/,
+    x509 |> Kernel.get_in([:issuer]) |> to_string,
+    "")}
 
     Validity:
       notBefore: #{Kernel.get_in(x509, [:validity, :notBefore])}
       notAfter: #{Kernel.get_in(x509, [:validity, :notAfter])}
 
     Subject:
-      #{
-      Regex.replace(
-        ~r/[^ -~\\\n]/,
-        x509 |> Kernel.get_in([:subject]) |> to_string,
-        ""
-      )
-    }
+      #{Regex.replace(~r/[^ -~\\\n]/,
+    x509 |> Kernel.get_in([:subject]) |> to_string,
+    "")}
      
     Signature Algorithm:
       #{Kernel.get_in(x509, [:signatureAlgorithm])}
