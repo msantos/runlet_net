@@ -12,6 +12,9 @@ defmodule RunletCmdTLSTest do
     sha1 = Runlet.Cmd.TLS.exec("sha1-intermediate.badssl.com")
     des3 = Runlet.Cmd.TLS.exec("3des.badssl.com")
 
+    # TLS 1.3
+    tls13 = Runlet.Cmd.TLS.exec("google.com")
+
     assert [
              %Runlet.Event{
                attr: %{},
@@ -109,5 +112,18 @@ defmodule RunletCmdTLSTest do
              }
              | _
            ] = des3
+
+    assert [
+             %Runlet.Event{
+               event: %Runlet.Event.Stdout{
+                 host: "google.com:443",
+                 service: "tls",
+                 description: "[protocol: :\"tlsv1.3\"]",
+                 time: ""
+               },
+               query: "tls google.com:443"
+             }
+             | _
+           ] = tls13
   end
 end

@@ -43,7 +43,7 @@ defmodule Runlet.Cmd.TLS do
              port,
              [
                verify_fun: {fun, []},
-               ciphers: :ssl.cipher_suites(:all, :"tlsv1.2")
+               ciphers: :ssl.cipher_suites(:all, :"tlsv1.3")
              ],
              5000
            ) do
