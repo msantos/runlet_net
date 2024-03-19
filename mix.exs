@@ -10,6 +10,7 @@ defmodule RunletNet.Mixfile do
       start_permanent: Mix.env() == :prod,
       description: "Miscellaneous network related commands for runlets",
       deps: deps(),
+      package: package(),
       dialyzer: [
         list_unused_filters: true,
         flags: [
@@ -28,6 +29,13 @@ defmodule RunletNet.Mixfile do
   def application do
     #  [applications: [:logger]]
     [extra_applications: [:inets, :ssl]]
+  end
+
+  defp package do
+    [
+      licenses: ["ISC"],
+      links: %{github: "https://github.com/msantos/runlet_net"}
+    ]
   end
 
   # Dependencies can be Hex packages:
