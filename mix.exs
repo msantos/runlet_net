@@ -51,6 +51,7 @@ defmodule RunletNet.Mixfile do
     [
       {:runlet, "~> 1.2"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.28", only: :dev, runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
     ]
   end
