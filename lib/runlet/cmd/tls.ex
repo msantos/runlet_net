@@ -42,6 +42,7 @@ defmodule Runlet.Cmd.TLS do
              String.to_charlist(ip),
              port,
              [
+               verify: :verify_none,
                verify_fun: {fun, []},
                ciphers: :ssl.cipher_suites(:all, :"tlsv1.3")
              ],
