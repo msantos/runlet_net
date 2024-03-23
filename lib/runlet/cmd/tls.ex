@@ -14,12 +14,15 @@ defmodule Runlet.Cmd.TLS do
   def exec(address) do
     {ip, port} =
       case Regex.split(~r/[:\s]/, address, trim: true) do
-        [i, p] -> {i, p}
-        [i] -> {i, "443"}
+        [i, p] -> {i, to_port(String.to_integer(p))}
+        [i] -> {i, 443}
       end
 
-    exec(ip, String.to_integer(port))
+    exec(ip, port)
   end
+
+  defp to_port(port) when port >= 0 and port <= 0xFFFF, do: port
+  defp to_port(_), do: 443
 
   @doc """
   Displays TLS protocol, cipher suite and certificate details
