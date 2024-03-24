@@ -86,7 +86,7 @@ get_value(OTPCert) ->
     ].
 
 to_string(N) ->
-    lists:concat(lists:concat([[X, ": ", maybe_string(Y), "\n"] || {X, Y} <- N])).
+    lists:concat(lists:concat([[X, $:, $\s, maybe_string(Y), $\n] || {X, Y} <- N])).
 
 maybe_string(N) when is_binary(N) -> binary_to_list(N);
 maybe_string(N) -> N.
