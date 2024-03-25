@@ -74,7 +74,7 @@ defmodule Runlet.Cmd.TLS do
     end)
   end
 
-  def connection_information(s) do
+  defp connection_information(s) do
     t =
       case :ssl.connection_information(s, [:protocol, :cipher_suite]) do
         {:ok, info} -> info
@@ -84,7 +84,7 @@ defmodule Runlet.Cmd.TLS do
     inspect(t)
   end
 
-  def format(x509) do
+  defp format(x509) do
     """
     Data:
       version: #{Kernel.get_in(x509, [:data, :version])}
