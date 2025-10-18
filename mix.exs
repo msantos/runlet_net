@@ -1,25 +1,40 @@
 defmodule RunletNet.Mixfile do
   use Mix.Project
 
+  @version "1.0.5"
+
   def project do
     [
       app: :runlet_net,
-      version: "1.0.4",
+      version: @version,
       elixir: "~> 1.9",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
-      description: "Miscellaneous network related commands for runlets",
       deps: deps(),
+      docs: docs(),
       package: package(),
+      description: "Miscellaneous network related commands for runlets",
       dialyzer: [
         list_unused_filters: true,
         flags: [
-          "-Wunmatched_returns",
+          :unmatched_returns,
           :error_handling,
-          :race_conditions,
           :underspecs
         ]
-      ]
+      ],
+      name: "runlet_net",
+      source_url: "https://github.com/msantos/runlet_net",
+      homepage_url: "https://github.com/msantos/runlet_net"
+    ]
+  end
+
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      extras: [
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme"
     ]
   end
 
